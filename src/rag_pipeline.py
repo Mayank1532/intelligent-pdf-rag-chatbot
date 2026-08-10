@@ -25,9 +25,17 @@ Answer:"""
             )
         )
 
+        sources = [
+            {
+                "source": doc.metadata.get("source", "Unknown"),
+                "page": doc.metadata.get("page", "Unknown"),
+            }
+            for doc in documents
+        ]
+
         return {
             "answer": response.content,
-            "sources": documents,
+            "sources": sources,
         }
 
     return rag
